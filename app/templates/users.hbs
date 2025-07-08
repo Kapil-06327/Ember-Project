@@ -1,0 +1,92 @@
+<style>
+  .form-container {
+    max-width: 400px;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    margin-bottom: 30px;
+    background: #f9f9f9;
+  }
+
+  .form-container input[type="text"],
+  .form-container input[type="email"] {
+    display: block;
+    width: 100%;
+    padding: 8px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+
+  .form-container button {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+
+  .form-container button:hover {
+    background-color: #0056b3;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    background: #fff;
+  }
+
+  table th, table td {
+    padding: 12px 15px;
+    border: 1px solid #ddd;
+    text-align: left;
+  }
+
+  table thead {
+    background-color: #f1f1f1;
+  }
+
+  .error-message {
+    color: red;
+    margin-top: 10px;
+  }
+</style>
+
+<div class="form-container">
+  <h2>User Registration Form</h2>
+  <form {{on "submit" this.addUser}}>
+    <input type="text" placeholder="Name" value={{this.name}} {{on "input" (fn this.updateField "name")}} />
+    <input type="email" placeholder="Email" value={{this.email}} {{on "input" (fn this.updateField "email")}} />
+    <input type="text" placeholder="Role" value={{this.role}} {{on "input" (fn this.updateField "role")}} />
+    <label>
+      <input type="checkbox" checked={{this.isActive}} {{on "change" this.updateCheckbox}} /> Active
+    </label>
+    <button type="submit">Add User</button>
+    {{#if this.error}}
+      <p class="error-message">{{this.error}}</p>
+    {{/if}}
+  </form>
+</div>
+
+<h2>User List</h2>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Email</th>
+      <th>Role</th>
+      <th>Status</th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#each this.userStore.users as |user|}}
+      <tr>
+        <td>{{user.name}}</td>
+        <td>{{user.email}}</td>
+        <td>{{user.role}}</td>
+        <td>{{if user.isActive "Active" "Inactive"}}</td>
+      </tr>
+    {{/each}}
+  </tbody>
+</table>

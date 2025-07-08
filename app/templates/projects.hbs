@@ -1,0 +1,107 @@
+<style>
+  .container {
+    max-width: 700px;
+    margin: 40px auto;
+    padding: 20px;
+    font-family: Arial, sans-serif;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.06);
+    background-color: #fafafa;
+  }
+
+  h2 {
+    text-align: center;
+    color: #333;
+  }
+
+  form {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+  }
+
+  input[type="text"] {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 14px;
+  }
+
+  button {
+    padding: 10px 20px;
+    background-color: #1976d2;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 14px;
+  }
+
+  button:hover {
+    background-color: #125ea8;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+
+  thead {
+    background-color: #1976d2;
+    color: white;
+  }
+
+  th, td {
+    padding: 12px 15px;
+    border: 1px solid #ddd;
+    text-align: left;
+  }
+
+  tbody tr:nth-child(odd) {
+    background-color: #f5f5f5;
+  }
+
+  tbody tr:hover {
+    background-color: #e0f0ff;
+  }
+</style>
+
+<div class="container">
+  <h2>{{if this.isEditing "Edit Project" "Add New Project"}}</h2>
+
+  <form {{on "submit" this.saveProject}}>
+    <input
+      type="text"
+      placeholder="Enter project title"
+      value={{this.projectTitle}}
+      {{on "input" this.updateTitle}}
+    />
+    <button type="submit">{{if this.isEditing "Update" "Add"}}</button>
+    {{#if this.isEditing}}
+      <button type="button" {{on "click" this.cancelEdit}} style="background: gray;">Cancel</button>
+    {{/if}}
+  </form>
+
+  <table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Project Title</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{#each this.projectStore.projects as |project|}}
+        <tr>
+          <td>{{project.id}}</td>
+          <td>{{project.title}}</td>
+          <td>
+            <button {{on "click" (fn this.editProject project)}}>Edit</button>
+          </td>
+        </tr>
+      {{/each}}
+    </tbody>
+  </table>
+</div>

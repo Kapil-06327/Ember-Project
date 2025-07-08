@@ -1,0 +1,16 @@
+<h2>ToDo List</h2>
+<ul>
+    {{#each this.model as |task|}}
+        <li>
+            <label>
+                <input type="checkbox" checked={{task.isCompleted}} />
+                {{task.title}}
+            </label>
+        </li>
+    {{/each}}
+</ul>
+
+<form {{on "submit" this.addTask}}>
+    <input type="text" placeholder="New Task" {{on "input" this.updateNewTask}} />
+    <button type="submit">Add Task</button>
+</form>

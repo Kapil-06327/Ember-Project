@@ -1,11 +1,107 @@
-<h1>My Ember ToDo App</h1>
-<nav>
-  <LinkTo @route="index">Home</LinkTo> |
-  <LinkTo @route="tasks">Tasks</LinkTo> |
-  <LinkTo @route="users">Users</LinkTo> |
-  <LinkTo @route="projects">Projects</LinkTo>
-</nav>
+<style>
+  body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #f5f5f5;
+}
 
-<hr />
+.layout {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
 
-{{outlet}}
+/* Top Navigation Bar */
+/*Top NavBar*/
+.topnav {
+  background-color: #1976d2;
+  color: white;
+  padding: 10px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.app-title {
+  margin: 0;
+  font-size: 20px;
+}
+
+.nav-links {
+  display: flex;
+  gap: 15px;
+}
+
+.nav-link {
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.nav-link:hover {
+  text-decoration: underline;
+}
+
+/* Main layout: sidebar + content */
+.main-layout {
+  display: flex;
+  flex: 1;
+  overflow: hidden;
+}
+
+/* Sidebar */
+.sidenav {
+  background-color: #e3f2fd;
+  width: 200px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  border-right: 1px solid #ccc;
+}
+
+.side-link {
+  color: #1976d2;
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.side-link:hover {
+  text-decoration: underline;
+}
+
+/* Main content */
+.content {
+  flex: 1;
+  padding: 25px;
+  overflow-y: auto;
+  background-color: white;
+  border-top: 1px solid #ccc;
+}
+
+</style>
+
+<div class="layout">
+  <header class="topnav">
+    <h1 class="app-title">📋 My Ember ToDo App</h1>
+    <nav class="nav-links">
+      <LinkTo @route="index" class="nav-link">Home</LinkTo>
+      <LinkTo @route="tasks" class="nav-link">Tasks</LinkTo>
+      <LinkTo @route="users" class="nav-link">Users</LinkTo>
+      <LinkTo @route="projects" class="nav-link">Projects</LinkTo>
+    </nav>
+  </header>
+
+  <div class="main-layout">
+    <aside class="sidenav">
+      <LinkTo @route="index" class="side-link">🏠 Home</LinkTo>
+      <LinkTo @route="tasks" class="side-link">📝 Tasks</LinkTo>
+      <LinkTo @route="users" class="side-link">👤 Users</LinkTo>
+      <LinkTo @route="projects" class="side-link">📁 Projects</LinkTo>
+    </aside>
+
+    <main class="content">
+      {{outlet}}
+    </main>
+  </div>
+</div>

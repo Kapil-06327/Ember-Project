@@ -31,7 +31,8 @@ export default class ProjectsController extends Controller {
 
   @action
   editProject(project) {
-        console.log(project);
+        
+    console.log(project, "project");
 
     this.projectTitle = project.title;
     this.editId = project.id;

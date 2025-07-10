@@ -98,7 +98,7 @@
           <td>{{project.id}}</td>
           <td>{{project.title}}</td>
           <td>
-            <button {{on "click" (fn this.editProject project)}}>Edit</button>
+            <button type="button" {{on "click" (fn this.editProject project)}}>Edit</button>
           </td>
         </tr>
       {{/each}}

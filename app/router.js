@@ -10,4 +10,5 @@ Router.map(function () {
   this.route('tasks');
   this.route('users');
   this.route('projects');
+  this.route('login');
 });

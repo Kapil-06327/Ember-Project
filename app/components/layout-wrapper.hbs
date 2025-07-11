@@ -1,29 +1,49 @@
 <div class="layout">
-  {{#unless this.isLoginRoute}}
+  {{#if this.isLoginRoute}}
+    <main class="login-page">
+      {{yield}}
+    </main>
+  {{else}}
     <header class="topnav">
-      <h1 class="app-title">📋 My Ember ToDo App</h1>
-      <nav class="nav-links">
+      <div class="topnav-left">
+        <h1 class="app-title">📋 Daily Docket</h1>
+      </div>
+      <nav class="topnav-right">
         <LinkTo @route="tasks" class="nav-link">🔔 Notifications</LinkTo>
         <LinkTo @route="tasks" class="nav-link">👤 My Profile</LinkTo>
-        <button class="nav-link logout-btn" {{on "click" this.handleLogout}}>🚪 Logout</button>
+        <button class="nav-link logout-btn" type="button" {{on "click" this.handleLogout}}>🚪 Logout</button>
       </nav>
     </header>
 
     <div class="main-layout">
       <aside class="sidenav">
-        <LinkTo @route="index" class="side-link">🏠 Home</LinkTo>
+        <LinkTo @route="index" class="side-link">🏠 Dashboard</LinkTo>
         <LinkTo @route="tasks" class="side-link">📝 Tasks</LinkTo>
         <LinkTo @route="users" class="side-link">👤 Users</LinkTo>
         <LinkTo @route="projects" class="side-link">📁 Projects</LinkTo>
+        <LinkTo @route="example-condition" class="side-link">🧪 Example Condition</LinkTo>
+
+        {{!-- <hr> --}}
+        <LinkTo @route="users" class="side-link">✅ My Tasks</LinkTo>
+        <LinkTo @route="users" class="side-link">🎯 Assigned to Me</LinkTo>
+        <LinkTo @route="users" class="side-link">✔️ Completed Tasks</LinkTo>
+        {{!-- <hr> --}}
+        <LinkTo @route="users" class="side-link">📊 Activity Logs</LinkTo>
+        <LinkTo @route="users" class="side-link">📈 Reports</LinkTo>
+        <LinkTo @route="users" class="side-link">🧑 Roles</LinkTo>
+        {{!-- <hr> --}}
+        <LinkTo @route="users" class="side-link">💬 Comments</LinkTo>
+        <LinkTo @route="users" class="side-link">🔔 Notifications</LinkTo>
+        <LinkTo @route="users" class="side-link">🧪 Beta Features</LinkTo>
+        <LinkTo @route="users" class="side-link">🔗 Integrations</LinkTo>
+        {{!-- <hr> --}}
+        <LinkTo @route="users" class="side-link">📘 Help</LinkTo>
+        <LinkTo @route="users" class="side-link">🔒 Security</LinkTo>
       </aside>
 
       <main class="content">
         {{yield}}
       </main>
     </div>
-  {{else}}
-    <main class="login-page">
-      {{yield}}
-    </main>
-  {{/unless}}
+  {{/if}}
 </div>

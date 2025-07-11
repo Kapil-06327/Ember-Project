@@ -11,4 +11,5 @@ Router.map(function () {
   this.route('users');
   this.route('projects');
   this.route('login');
+  this.route('example-condition');
 });

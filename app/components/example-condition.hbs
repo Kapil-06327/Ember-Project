@@ -1,1 +1,45 @@
-{{yield}}
+<h2>🧪 Ember Conditional Examples</h2>
+
+{{#if this.isLoggedIn}}
+  <p>✅ You are logged in.</p>
+{{else}}
+  <p>❌ Please log in to continue.</p>
+{{/if}}
+
+{{#unless this.isAdmin}}
+  <p>👮‍♂️ You are not an admin.</p>
+{{/unless}}
+
+<p>🎯 Status: {{if this.isLoggedIn "Online" "Offline"}}</p>
+
+{{#if this.isOlder}}
+  <p>🔞 You are older.</p>
+  {{else}}
+  <p>🔞 You are young.</p>
+{{/if}}
+
+{{#if this.isLoggedInAndAdmin}}
+  <p>🛡️ Admin Access Granted</p>
+{{/if}}
+
+<button class={{if this.isLoggedIn "btn-success" "btn-danger"}} type="button">
+  {{if this.isLoggedIn "Logout" "Login"}}
+</button>
+
+{{#if (eq this.status "active")}}
+  <p>💡 Account is Active</p>
+{{/if}}
+
+<ul>
+  {{#each this.items as |item index|}}
+    {{#if item}}
+      <li>{{index}} - {{item}}</li>
+    {{else}}
+      <li>{{index}} - ❌ No Item</li>
+    {{/if}}
+  {{/each}}
+</ul>
+
+{{#if (gt this.age 18)}}
+  <p>You are an adult.</p>
+{{/if}}

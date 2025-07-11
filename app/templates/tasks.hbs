@@ -1,16 +1,24 @@
-<h2>ToDo List</h2>
-<ul>
-    {{#each this.model as |task|}}
-        <li>
-            <label>
-                <input type="checkbox" checked={{task.isCompleted}} />
-                {{task.title}}
-            </label>
-        </li>
-    {{/each}}
-</ul>
+<div class="todo-container">
+  <h2>📝 ToDo List</h2>
 
-<form {{on "submit" this.addTask}}>
-    <input type="text" placeholder="New Task" {{on "input" this.updateNewTask}} />
-    <button type="submit">Add Task</button>
-</form>
+  <ul class="task-list">
+    {{#each this.model as |task|}}
+      <li class="task-item">
+        <label class="task-label">
+          <input type="checkbox" checked={{task.isCompleted}} class="task-checkbox" />
+          <span class={{if task.isCompleted "task-title completed" "task-title"}}>{{task.title}}</span>
+        </label>
+      </li>
+    {{/each}}
+  </ul>
+
+  <form class="task-form" {{on "submit" this.addTask}}>
+    <input
+      type="text"
+      placeholder="Enter a new task..."
+      class="task-input"
+      {{on "input" this.updateNewTask}}
+    />
+    <button type="submit" class="task-button">Add Task</button>
+  </form>
+</div>

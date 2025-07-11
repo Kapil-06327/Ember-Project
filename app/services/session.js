@@ -6,10 +6,15 @@ export default class SessionService extends Service {
 
   async authenticate(email, password) {
     if (email === 'admin@example.com' && password === 'password') {
+      this.isAuthenticated = true;
       this.user = { email };
-      this.isAuthenticated = true; // ✅ must set this
     } else {
       throw new Error('Invalid credentials');
     }
+  }
+
+  logout() {
+    this.isAuthenticated = false;
+    this.user = null;
   }
 }

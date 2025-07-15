@@ -36,6 +36,8 @@
     "@eslint/js": "^9.28.0",
     "@glimmer/component": "^2.0.0",
     "@glimmer/tracking": "^1.1.2",
+    "@tailwindcss/postcss7-compat": "^2.2.17",
+    "autoprefixer": "^9.8.8",
     "broccoli-asset-rev": "^3.0.0",
     "concurrently": "^9.1.2",
     "ember-auto-import": "^2.10.0",
@@ -47,11 +49,13 @@
     "ember-cli-deprecation-workflow": "^3.3.0",
     "ember-cli-htmlbars": "^6.3.0",
     "ember-cli-inject-live-reload": "^2.1.0",
+    "ember-cli-postcss": "^8.2.0",
     "ember-cli-sri": "^2.1.1",
     "ember-cli-terser": "^4.0.2",
     "ember-data": "~5.5.0",
     "ember-fetch": "^8.1.2",
     "ember-load-initializers": "^3.0.1",
+    "ember-modal-dialog": "^4.1.5",
     "ember-modifier": "^4.2.2",
     "ember-page-title": "^9.0.2",
     "ember-qunit": "^9.0.3",
@@ -68,12 +72,14 @@
     "eslint-plugin-qunit": "^8.1.2",
     "globals": "^15.15.0",
     "loader.js": "^4.7.0",
+    "postcss": "^7.0.39",
     "prettier": "^3.5.3",
     "prettier-plugin-ember-template-tag": "^2.0.6",
     "qunit": "^2.24.1",
     "qunit-dom": "^3.4.0",
     "stylelint": "^16.20.0",
     "stylelint-config-standard": "^36.0.1",
+    "tailwindcss": "npm:@tailwindcss/postcss7-compat@^2.2.17",
     "tracked-built-ins": "^3.4.0",
     "webpack": "^5.99.9"
   },
@@ -82,5 +88,8 @@
   },
   "ember": {
     "edition": "octane"
+  },
+  "dependencies": {
+    "@ember/string": "^4.0.1"
   }
 }

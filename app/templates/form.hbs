@@ -1,0 +1,21 @@
+<div class="todo-container">
+    <form class="task-form" {{on "submit" this.addTask}}>
+        <input type="text" name='firstname' placeholder="fisrt name" class="task-input" {{on "input"
+            this.updateNewTask}} />
+        <input type="text" name='lastname' placeholder="last name" class="task-input" {{on "input"
+            this.updateNewTask}} />
+        <button type="submit" class="task-button">Add Task</button>
+
+    </form>
+
+
+    <ul class="task-list">
+        {{#each this.model as |form|}}
+        <li class="task-item">
+            <label class="task-label">
+                <span class="task-title">{{form.firstname}}{{form.lastname}}</span>
+            </label>
+        </li>
+        {{/each}}
+    </ul>
+</div>

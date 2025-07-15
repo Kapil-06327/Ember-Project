@@ -11,5 +11,8 @@ Router.map(function () {
   this.route('users');
   this.route('projects');
   this.route('login');
-  this.route('example-condition');
+  // this.route('projects', function() {
+  //   this.route('project', { path: '/:project_id' }); // dynamic segment /projects/123   -> app/templates/projects/project.hbs
+  // });
+  this.route('my-tasks');
 });

@@ -13,8 +13,17 @@ module.exports = function (defaults) {
         DEPRECATE_STORE_EXTENDS_EMBER_OBJECT: false,
       },
     },
+    postcssOptions: {
+    compile: {
+      enabled: true,
+      plugins: [
+          require('tailwindcss')('./tailwind.config.js'),
+          require('autoprefixer')
+        ]
+    }
+  }
     // Add options here
   });
-
+   app.import('app/styles/app.css');
   return app.toTree();
 };

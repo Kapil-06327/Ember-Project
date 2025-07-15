@@ -1,6 +1,14 @@
 <div class="todo-container">
   <h2>📝 ToDo List</h2>
 
+  {{!-- ✅ Filter Buttons --}}
+  <div class="filter-buttons">
+    <button type="button" {{on "click" (fn (mut this.status) "all")}} disabled={{eq this.status "all"}}>All</button>
+    <button type="button" {{on "click" (fn (mut this.status) "completed")}} disabled={{eq this.status "completed"}}>Completed</button>
+    <button type="button" {{on "click" (fn (mut this.status) "pending")}} disabled={{eq this.status "pending"}}>Pending</button>
+  </div>
+
+  {{!-- ✅ Task List --}}
   <ul class="task-list">
     {{#each this.model as |task|}}
       <li class="task-item">
@@ -12,6 +20,14 @@
     {{/each}}
   </ul>
 
+  {{!-- ✅ Pagination Controls --}}
+  <div class="pagination">
+    <button disabled={{eq this.page 1}} type="button" {{on "click" this.goToPrevPage}}>Prev</button>
+<span>Page {{this.page}}</span>
+<button type="button" {{on "click" this.goToNextPage}}>Next</button>
+  </div>
+
+  {{!-- ✅ New Task Form --}}
   <form class="task-form" {{on "submit" this.addTask}}>
     <input
       type="text"

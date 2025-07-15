@@ -1,18 +1,22 @@
-import Route from '@ember/routing/route';
+// app/routes/tasks.js
+import AuthenticatedRoute from './authenticated';
 import { inject as service } from '@ember/service';
 
-export default class TasksRoute extends Route {
+export default class TasksRoute extends AuthenticatedRoute {
   @service session;
   @service router;
-  @service taskStore; // ✅ Add this
+  @service taskStore;
 
-  beforeModel() {
-    if (!this.session.isAuthenticated) {
-      this.router.transitionTo('login');
-    }
-  }
+  queryParams = {
+    status: { refreshModel: true },
+    page: { refreshModel: true }
+  };
 
-  model() {
-    return this.taskStore.getTasks(); // ✅ Correct service used here
+  model(params) {
+    return this.taskStore.getTasks({
+      status: params.status || 'all',
+      page: params.page || 1
+    });
   }
 }
+

@@ -1,7 +1,7 @@
-import Route from '@ember/routing/route';
+import AuthenticatedRoute from './authenticated';
 import { inject as service } from '@ember/service';
 
-export default class UsersRoute extends Route {
+export default class UsersRoute extends AuthenticatedRoute {
   @service userStore;
 
   model() {
